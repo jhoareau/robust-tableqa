@@ -308,9 +308,7 @@ def main(arg_list=None):
         "callbacks": callback_list,
         "plugins": plugins,
         "log_every_n_steps": 10,
-        "check_val_every_n_epoch": None,
-        "val_check_interval": config.valid.step_size
-        * config.train.additional.gradient_accumulation_steps,  # this is to use global_step as the interval number: global_step * grad_accumulation = batch_idx (val_check_interval is based on batch_idx)
+        "check_val_every_n_epoch": 1,
         # 'accelerator': "cpu",
         # 'strategy': "ddp",
         # 'devices': 2,

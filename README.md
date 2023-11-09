@@ -1,3 +1,3 @@
 ```
-python src/main.py configs/wtq/dpr_ITR_mix_wtq.jsonnet --disable_wandb_logging --accelerator gpu --devices 4 --strategy ddp --num_sanity_val_steps 2 --experiment_name DPR_ITR_wtq --mode train --override --opts train.batch_size=1 train.scheduler=None train.epochs=20 train.lr=0.00001 train.additional.gradient_accumulation_steps=4 train.additional.warmup_steps=200 train.additional.early_stop_patience=8 train.additional.save_top_k=3 valid.batch_size=8 test.batch_size=8 valid.step_size=200 reset=1
+python src/main.py configs/wtq/dpr_ITR_mix_wtq.jsonnet --disable_wandb_logging --accelerator gpu --devices 4 --strategy ddp --num_sanity_val_steps 2 --experiment_name DPR_ITR_wtq --mode train --override --opts train.batch_size=1 train.scheduler=None train.epochs=5 train.lr=0.00001 train.additional.gradient_accumulation_steps=4 train.additional.warmup_steps=200 valid.batch_size=8 test.batch_size=8 valid.step_size=200 reset=1
 ```
