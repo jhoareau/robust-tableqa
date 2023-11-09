@@ -264,12 +264,7 @@ def main(arg_list=None):
     # Checkpoint Callback
     checkpoint_callback = ModelCheckpoint(
         dirpath=config.saved_model_path,
-        # every_n_train_steps=config.train.save_interval,
-        save_top_k=config.train.additional.save_top_k,
-        monitor=config.train.additional.save_top_k_metric
-        if "save_top_k_metric" in config.train.additional.keys()
-        else None,
-        mode=config.train.additional.save_top_k_mode,
+        every_n_train_steps=1000,
         filename="model_step_{step}",
         save_last=True,
         verbose=True,
@@ -277,19 +272,6 @@ def main(arg_list=None):
         save_on_train_epoch_end=False,
     )
     callback_list.append(checkpoint_callback)
-
-    # Early Stopping Callback
-    if (
-        "save_top_k_metric" in config.train.additional.keys()
-        and config.train.additional.get("early_stop_patience", 0) > 0
-    ):
-        early_stop_callback = EarlyStopping(
-            monitor=config.train.additional.save_top_k_metric,
-            patience=config.train.additional.early_stop_patience,
-            verbose=True,
-            mode=config.train.additional.save_top_k_mode,
-        )
-        callback_list.append(early_stop_callback)
 
     metrics_history_logger = MetricsHistoryLogger()
 
