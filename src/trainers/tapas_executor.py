@@ -26,7 +26,6 @@ import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import Dataset, DataLoader
-from torch.utils.tensorboard import SummaryWriter
 
 import pytorch_lightning as pl
 from pytorch_lightning import Trainer, seed_everything
